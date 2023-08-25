@@ -42,7 +42,7 @@ wget --user=${username} --password=${password} --post-file ${query_file} "http:/
 * db：SQL 语句执行的数据库。如果用户在 query 中包含了 `use db` 语句，则 `db` 参数为可选，否则需要指定。
 * mock: 打开/关闭信息脱敏过程。
 
-## 请求样例:
+## 请求样例
 
 命令
 
