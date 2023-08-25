@@ -32,7 +32,7 @@ Http Post
 ```
 
 ```shell
-wget --user=${username} --password=${password} --post-file ${query_file} "http://${fe_host}:${fe_http_port}/api/query_dump?db=${database}&mock={value}" -O ${dump_file}
+wget --user=${username} --password=${password} --post-file ${query_file} "http://${fe_host}:${fe_http_port}/api/query_dump?db=${database}&mock=${value}" -O ${dump_file}
 ```
 
 参数说明：
