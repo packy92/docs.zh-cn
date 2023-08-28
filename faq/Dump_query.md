@@ -4,7 +4,7 @@
 
 使用 StarRocks 执行查询 SQL 时，如果遇到以下问题，可以通过 StarRocks 的 query_dump 功能将 SQL 以及相关的信息发送给 StarRocks 技术支持人员进行问题排查。
 
-* 执行 SQL 或者 Explain SQL 时返回 `Unknown Error`。
+* 执行 SQL 或者 EXPLAIN SQL 时返回 `Unknown Error`。
 * 执行 SQL 时遇到非正常返回的报错信息或异常。
 * 执行 SQL 时效率不符合预期，或者发现执行计划有优化点（例如，可以裁剪分区或进行 Join 顺序调整）。
 
@@ -21,11 +21,11 @@ query_dump 会根据查询的 SQL，返回 FE 执行 SQL 时依赖的信息，�
 * 执行计划信息
 
 为了保护数据隐私，我们会对查询使用的库名，表名，列名等元信息进行脱敏，同时也会使用脱敏后的元信息改写查询语句。
-元信息脱敏默认开启。如果脱敏过程遭遇异常会终止脱敏过程，则使用原始的信息。如果需要关闭脱敏过程，可以在URI中设置"mock=false"参数。
+元信息脱敏默认开启。如果脱敏过程遇到异常会终止脱敏过程，则使用原始信息。如果需要关闭脱敏过程，可以在URI中设置 "mock=false"。
 
 ## HTTP 接口
 
-Http Post
+HTTP Post
 
 ```shell
  fe_host:fe_http_port/api/query_dump?db=${database}&mock={value} post_data=${Query}
@@ -43,6 +43,8 @@ wget --user=${username} --password=${password} --post-file ${query_file} "http:/
 * mock: 打开/关闭信息脱敏过程。
 
 ## 请求样例
+
+### 关闭信息脱敏
 
 命令
 
@@ -88,6 +90,8 @@ wget --user=root --password=123 --post-file query_file "http://127.0.0.1:8030/ap
   "commit_version": "0c4d8c8d3e"
 }
 ```
+
+### 打开信息脱敏（默认）
 
 命令
 
